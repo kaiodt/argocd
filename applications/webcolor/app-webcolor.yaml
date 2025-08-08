@@ -10,7 +10,9 @@ spec:
     targetRevision: HEAD
     path: k8s/webcolor
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
   destination:
     namespace: webcolor
     server: https://kubernetes.default.svc
