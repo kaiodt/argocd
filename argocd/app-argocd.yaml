@@ -18,6 +18,8 @@ spec:
     # Source 2: Provides values file to ArgoCD's Helm Chart
     - repoURL: https://github.com/kaiodt/argocd.git
       targetRevision: HEAD
+      directory:
+        recurse: true
       ref: values
     
     # Source 3: Root App - Applies Applications in the applications directory
