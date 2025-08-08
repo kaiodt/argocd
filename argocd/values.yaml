@@ -9,6 +9,9 @@ controller:
 
 server:
   replicas: 1
+  service:
+    type: LoadBalancer
+    servicePortHttp: 8080
 
 repoServer:
   replicas: 1
