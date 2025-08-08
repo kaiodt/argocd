@@ -6,6 +6,7 @@ metadata:
 spec:
   project: default
   sources:
+    # Source 1: Installs AlrgoCD via Helm Chart
     - repoURL: https://argoproj.github.io/argo-helm
       chart: argo-cd
       targetRevision: 8.2.5
@@ -13,11 +14,18 @@ spec:
         releaseName: argo-cd
         valueFiles:
           - $values/argocd/values.yaml
+    
+    # Source 2: Provides values file to ArgoCD's Helm Chart
     - repoURL: https://github.com/kaiodt/argocd.git
       targetRevision: HEAD
+      ref: values
+    
+    # Source 3: Root App - Applies Applications in the applications directory
+    - repoURL: https://github.com/kaiodt/argocd.git
+      targetRevision: HEAD
+      path: applications
       directory:
         recurse: true
-      ref: values
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
