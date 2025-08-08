@@ -16,6 +16,8 @@ spec:
     - repoURL: https://github.com/kaiodt/argocd.git
       targetRevision: HEAD
       ref: values
+  syncPolicy:
+    automated: {}
   destination:
     namespace: monitoring
     server: https://kubernetes.default.svc
