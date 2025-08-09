@@ -31,10 +31,16 @@ spec:
       path: applications
       directory:
         recurse: true
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-  destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=false
+      - ApplyOutOfSyncOnly=false

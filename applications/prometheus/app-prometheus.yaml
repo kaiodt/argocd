@@ -16,10 +16,16 @@ spec:
     - repoURL: https://github.com/kaiodt/argocd.git
       targetRevision: HEAD
       ref: values
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-  destination:
-    namespace: monitoring
-    server: https://kubernetes.default.svc
+    syncOptions:
+      - Validate=true
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=false
+      - ApplyOutOfSyncOnly=false
