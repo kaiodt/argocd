@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: chaos-project
+  namespace: argocd
+spec:
+  description: Chaos Simulator App
+  sourceRepos:
+    - https://github.com/kaiodt/web-page-deploy.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: chaos
