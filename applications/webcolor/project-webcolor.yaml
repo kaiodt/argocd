@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: webcolor-project
+  namespace: argocd
+spec:
+  description: Web Color App
+  sourceRepos:
+    - https://github.com/kaiodt/web-page-deploy.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: webcolor

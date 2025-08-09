@@ -4,7 +4,7 @@ metadata:
   name: webcolor
   namespace: argocd
 spec:
-  project: default
+  project: webcolor-project
   source:
     repoURL: https://github.com/kaiodt/web-page-deploy.git
     targetRevision: HEAD
