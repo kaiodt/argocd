@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: prometheus-project
+  namespace: argocd
+spec:
+  description: Prometheus App
+  sourceRepos:
+    - https://prometheus-community.github.io/helm-charts
+    - https://github.com/kaiodt/argocd.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: monitoring
